@@ -10,15 +10,15 @@
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html, body {
-    background: #fbf9fc url('bg-texture.png') repeat;
+    background: #f9f4ee url('bg-texture.png') repeat;
     font-family: 'Montserrat', sans-serif;
-    color: #6b6357;
+    color: #6b5d4a;
     min-height: 100vh;
   }
   .page {
     max-width: 520px;
     margin: 0 auto;
-    background: #fbf9fc url('bg-texture.png') repeat;
+    background: #f9f4ee url('bg-texture.png') repeat;
     min-height: 100vh;
     box-shadow: 0 0 40px rgba(0,0,0,0.06);
   }
@@ -30,88 +30,55 @@
     padding: 40px 28px 60px;
     text-align: center;
   }
-  .event-block { margin-bottom: 46px; }
-  .event-block.done .countdown { opacity: 0.5; }
-  .event-date {
-    font-size: 11px;
-    letter-spacing: 3px;
-    color: #a59a88;
-    margin-bottom: 14px;
-    text-transform: uppercase;
+  .event-block {
+    margin-bottom: 12px;
   }
-  .countdown {
-    display: flex;
-    justify-content: center;
-    gap: 14px;
-  }
-  .unit { min-width: 62px; }
-  .num {
+  .event-title {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 38px;
-    font-weight: 400;
-    color: #6b6357;
-    line-height: 1;
-  }
-  .unit-label {
-    font-size: 10px;
+    font-size: 17px;
     letter-spacing: 2px;
-    color: #a59a88;
+    color: #6b5d4a;
     text-transform: uppercase;
-    margin-top: 6px;
-  }
-  .done-badge {
-    display: none;
-    font-family: 'Cormorant Garamond', serif;
-    font-style: italic;
-    font-size: 18px;
-    color: #a59a88;
-    padding: 12px 0;
-  }
-  .event-block.done .countdown { display: none; }
-  .event-block.done .done-badge { display: block; }
-  .separator {
-    width: 60px;
-    height: 1px;
-    background: #d4c9b5;
-    margin: 0 auto 36px;
+    margin-bottom: 18px;
+    font-weight: 500;
   }
   .location-name {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 18px;
-    color: #8a7f70;
+    font-size: 19px;
+    color: #8a7960;
     margin-bottom: 4px;
   }
   .location-sub {
     font-size: 11px;
     letter-spacing: 2px;
-    color: #a59a88;
-    margin-bottom: 22px;
+    color: #a59078;
+    margin-bottom: 18px;
     text-transform: uppercase;
   }
   .map-wrap {
     width: 100%;
     max-width: 440px;
-    margin: 0 auto 20px;
+    margin: 0 auto 18px;
     border-radius: 4px;
     overflow: hidden;
-    box-shadow: 0 4px 20px rgba(107, 99, 87, 0.15);
+    box-shadow: 0 4px 20px rgba(107, 93, 74, 0.15);
     border: 1px solid rgba(184, 168, 144, 0.3);
   }
   .map-wrap iframe {
     display: block;
     width: 100%;
-    height: 260px;
+    height: 240px;
     border: 0;
   }
   .location-btn {
     display: inline-block;
-    padding: 14px 32px;
+    padding: 13px 30px;
     background: transparent;
-    color: #6b6357;
+    color: #6b5d4a;
     border: 1px solid #b8a890;
     border-radius: 2px;
     font-family: 'Montserrat', sans-serif;
-    font-size: 12px;
+    font-size: 11px;
     letter-spacing: 3px;
     text-transform: uppercase;
     text-decoration: none;
@@ -119,19 +86,17 @@
   }
   .location-btn:hover {
     background: #b8a890;
-    color: #fbf7f0;
+    color: #f9f4ee;
   }
-  .divider {
-    width: 40px;
+  .separator {
+    width: 60px;
     height: 1px;
-    background: #c9bda8;
-    margin: 10px auto 30px;
+    background: #d4c2a0;
+    margin: 56px auto;
   }
   @media (max-width: 420px) {
-    .num { font-size: 32px; }
-    .unit { min-width: 52px; }
-    .countdown { gap: 8px; }
-    .map-wrap iframe { height: 220px; }
+    .map-wrap iframe { height: 210px; }
+    .event-title { font-size: 15px; letter-spacing: 1.5px; }
   }
 </style>
 </head>
@@ -142,80 +107,42 @@
     <div class="info">
 
       <!-- KINA -->
-      <div class="event-block" id="kina-block">
-        <div class="event-date">Kına · 22 Mayıs 2026 · 19:00</div>
-        <div class="countdown">
-          <div class="unit"><div class="num" id="kina-days">00</div><div class="unit-label">Gün</div></div>
-          <div class="unit"><div class="num" id="kina-hours">00</div><div class="unit-label">Saat</div></div>
-          <div class="unit"><div class="num" id="kina-minutes">00</div><div class="unit-label">Dakika</div></div>
-          <div class="unit"><div class="num" id="kina-seconds">00</div><div class="unit-label">Saniye</div></div>
+      <div class="event-block">
+        <div class="event-title">Kına · 22 Mayıs 2026 · 19:00</div>
+        <div class="location-name">Erdal İnönü Parkı</div>
+        <div class="location-sub">Muratpaşa · Antalya</div>
+
+        <div class="map-wrap">
+          <iframe
+            src="https://maps.google.com/maps?q=36.862070590326766,30.7274970006144&hl=tr&z=17&output=embed"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            allowfullscreen></iframe>
         </div>
-        <div class="done-badge">Kına tamamlandı ✓</div>
+
+        <a href="https://www.google.com/maps/search/?api=1&query=36.862070590326766,30.7274970006144" target="_blank" rel="noopener" class="location-btn">Konuma Git</a>
       </div>
 
       <div class="separator"></div>
 
       <!-- NIKAH -->
-      <div class="event-block" id="nikah-block">
-        <div class="event-date">Nikah · 23 Mayıs 2026 · 17:30</div>
-        <div class="countdown">
-          <div class="unit"><div class="num" id="nikah-days">00</div><div class="unit-label">Gün</div></div>
-          <div class="unit"><div class="num" id="nikah-hours">00</div><div class="unit-label">Saat</div></div>
-          <div class="unit"><div class="num" id="nikah-minutes">00</div><div class="unit-label">Dakika</div></div>
-          <div class="unit"><div class="num" id="nikah-seconds">00</div><div class="unit-label">Saniye</div></div>
+      <div class="event-block">
+        <div class="event-title">Nikah · 23 Mayıs 2026 · 18:00</div>
+        <div class="location-name">Antalya Kartpostalı</div>
+        <div class="location-sub">Şirinyalı, Lara Cd. · Muratpaşa</div>
+
+        <div class="map-wrap">
+          <iframe
+            src="https://maps.google.com/maps?q=36.86257483601452,30.726320613140093&hl=tr&z=17&output=embed"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            allowfullscreen></iframe>
         </div>
-        <div class="done-badge">Nikah tamamlandı ✓</div>
+
+        <a href="https://www.google.com/maps/search/?api=1&query=36.86257483601452,30.726320613140093" target="_blank" rel="noopener" class="location-btn">Konuma Git</a>
       </div>
 
-      <div class="divider"></div>
-
-      <div class="location-name">Erdal İnönü Kent Parkı</div>
-      <div class="location-sub">Antalya · Muratpaşa</div>
-
-      <div class="map-wrap">
-        <iframe
-          src="https://maps.google.com/maps?q=Antalya+Kartpostal%C4%B1+%C5%9Eirinyal%C4%B1+Muratpa%C5%9Fa&hl=tr&z=17&output=embed"
-          loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade"
-          allowfullscreen></iframe>
-      </div>
-
-      <a href="https://share.google/9MzaAOGUPWgJApaND" target="_blank" rel="noopener" class="location-btn">Konuma Git</a>
     </div>
   </div>
-
-<script>
-  const kinaDate  = new Date('2026-05-22T19:00:00+03:00').getTime();
-  const nikahDate = new Date('2026-05-23T17:30:00+03:00').getTime();
-
-  function updatePair(target, prefix, blockId) {
-    const now = new Date().getTime();
-    const diff = target - now;
-    const block = document.getElementById(blockId);
-
-    if (diff <= 0) {
-      block.classList.add('done');
-      return;
-    }
-
-    const days = Math.floor(diff / 86400000);
-    const hours = Math.floor((diff % 86400000) / 3600000);
-    const minutes = Math.floor((diff % 3600000) / 60000);
-    const seconds = Math.floor((diff % 60000) / 1000);
-
-    document.getElementById(prefix + '-days').textContent = String(days).padStart(2, '0');
-    document.getElementById(prefix + '-hours').textContent = String(hours).padStart(2, '0');
-    document.getElementById(prefix + '-minutes').textContent = String(minutes).padStart(2, '0');
-    document.getElementById(prefix + '-seconds').textContent = String(seconds).padStart(2, '0');
-  }
-
-  function updateAll() {
-    updatePair(kinaDate, 'kina', 'kina-block');
-    updatePair(nikahDate, 'nikah', 'nikah-block');
-  }
-
-  updateAll();
-  setInterval(updateAll, 1000);
-</script>
 </body>
 </html>
